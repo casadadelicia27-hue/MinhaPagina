@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050605">
+<title>CASADA DELÍCIA</title>
+
+<style>
+:root {
+  --verde: #9cff00;
+  --vermelho: #ed3449;
+  --fundo: #050605;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background:
+    radial-gradient(ellipse at center, #102000 0%, #050605 65%);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 790px;
+  text-align: center;
+}
+
+.corrente {
+  font-size: 100px;
+  line-height: 1.2;
+  color: var(--verde);
+  filter: drop-shadow(0 0 15px #9cff0080);
+  margin-bottom: 15px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(28px, 6vw, 49px);
+  line-height: 1.12;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+h1 span {
+  display: block;
+  color: var(--verde);
+  margin-top: 5px;
+}
+
+.subtitulo {
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 22px auto;
+  max-width: 470px;
+}
+
+.linha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 400px;
+  margin: 25px auto;
+  color: var(--verde);
+}
+
+.linha::before,
+.linha::after {
+  content: "";
+  height: 2px;
+  flex: 1;
+  background: var(--verde);
+  box-shadow: 0 0 8px var(--verde);
+}
+
+.ponto {
+  width: 10px;
+  height: 10px;
+  background: var(--verde);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--verde);
+}
+
+.seta {
+  font-size: 76px;
+  color: var(--verde);
+  line-height: 1;
+  margin: 15px 0 30px;
+  filter: drop-shadow(0 0 10px #9cff0070);
+  animation: descer 1.5s infinite ease-in-out;
+}
+
+.caixa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px;
+  border: 1px solid #454545;
+  border-radius: 16px;
+  background: #191919;
+  box-shadow: 0 12px 35px #0008;
+}
+
+.link {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: left;
+  font-size: clamp(13px, 3vw, 21px);
+  padding-left: 8px;
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  background: var(--vermelho);
+  color: white;
+  padding: 17px 23px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.15);
+}
+
+#mensagem {
+  min-height: 22px;
+  margin-top: 14px;
+  color: var(--verde);
+  font-size: 14px;
+}
+
+.rodape {
+  color: #777;
+  font-size: 12px;
+  margin-top: 38px;
+  letter-spacing: 2px;
+}
+
+@keyframes descer {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(9px); }
+}
+
+@media (max-width: 450px) {
+  .corrente { font-size: 78px; }
+  .caixa { gap: 7px; padding: 9px; }
+  button { padding: 15px 13px; font-size: 14px; }
+  .subtitulo { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="container">
+
+  <div class="corrente" aria-hidden="true">🔗</div>
+
+  <h1>
+    Acesse pelo navegador
+    <span>copiando o link abaixo</span>
+  </h1>
+
+  <p class="subtitulo">
+    Toque no botão para copiar o endereço.
+    Depois, cole no navegador e acesse
+    o link oficial da Casada Delícia.
+  </p>
+
+  <div class="linha" aria-hidden="true">
+    <span class="ponto"></span>
+  </div>
+
+  <div class="seta" aria-hidden="true">↓</div>
+
+  <section class="caixa">
+    <div class="link" id="endereco">
+      https://beacons.ai/CasadaDelicia
+    </div>
+
+    <button id="copiar" type="button">
+      Copiar
+    </button>
+  </section>
+
+  <p id="mensagem" role="status" aria-live="polite"></p>
+
+  <div class="rodape">CASADA DELÍCIA</div>
+
+</main>
+
+<script>
+const endereco = "https://beacons.ai/CasadaDelicia";
+const botao = document.getElementById("copiar");
+const mensagem = document.getElementById("mensagem");
+
+botao.addEventListener("click", async () => {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(endereco);
+    } else {
+      const campo = document.createElement("textarea");
+      campo.value = endereco;
+      campo.style.position = "fixed";
+      campo.style.left = "-9999px";
+      document.body.appendChild(campo);
+      campo.select();
+
+      const sucesso = document.execCommand("copy");
+      campo.remove();
+
+      if (!sucesso) throw new Error("Falha ao copiar");
+    }
+
+    botao.textContent = "Copiado!";
+    mensagem.textContent =
+      "Link copiado! Agora é só colar no navegador.";
+
+    setTimeout(() => {
+      botao.textContent = "Copiar";
+    }, 2500);
+
+  } catch (erro) {
+    mensagem.textContent =
+      "Copie o endereço manualmente: " + endereco;
+  }
+});
+</script>
+
+</body>
+</html>
