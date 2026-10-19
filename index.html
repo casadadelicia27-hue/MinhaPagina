@@ -1,303 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020502">
-<title>Ksada Delícia ♠</title>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  padding: 30px 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  text-align: center;
-  background: radial-gradient(ellipse at center,
-    #102600 0%, #030703 52%, #000 100%);
-}
-
-.pagina {
-  width: 100%;
-  max-width: 700px;
-}
-
-.marca {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 7px;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
-  color: #91ff00;
-  font-family: "Brush Script MT", cursive;
-  font-size: clamp(43px, 10vw, 76px);
-  font-weight: bold;
-  font-style: italic;
-  line-height: 1.15;
-  text-shadow: 0 0 12px #67ff00, 0 0 30px #397d00;
-}
-
-.naipe {
-  font-family: Arial, sans-serif;
-  font-size: 0.68em;
-  font-style: normal;
-}
-
-h1 {
-  margin: 0 0 8px;
-  font-size: clamp(24px, 5.5vw, 40px);
-  line-height: 1.2;
-  font-weight: 900;
-}
-
-h2 {
-  margin: 0 0 28px;
-  color: #8cff00;
-  font-size: clamp(22px, 5vw, 38px);
-  line-height: 1.2;
-  font-weight: 900;
-}
-
-.descricao {
-  margin: 0 auto 35px;
-  color: #ccc;
-  font-size: clamp(16px, 3.5vw, 21px);
-  line-height: 1.6;
-}
-
-.linha {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  margin-bottom: 28px;
-  color: #8cff00;
-}
-
-.linha::before,
-.linha::after {
-  content: "";
-  flex: 1;
-  height: 4px;
-  background: #8cff00;
-  box-shadow: 0 0 12px #69ff00;
-}
-
-.ponto {
-  font-size: 27px;
-}
-
-.seta {
-  display: inline-block;
-  color: #8cff00;
-  font-size: 76px;
-  line-height: 1;
-  margin-bottom: 30px;
-  text-shadow: 0 0 12px #69ff00, 0 0 25px #69ff00;
-  animation: setaMovimento 0.8s ease-in-out infinite,
-             setaPisca 1s steps(2, start) infinite;
-}
-
-@keyframes setaMovimento {
-  0%, 100% { transform: translateY(-8px); }
-  50% { transform: translateY(12px); }
-}
-
-@keyframes setaPisca {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
-}
-
-.caixa-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 12px;
-  border: 2px solid #444;
-  border-radius: 24px;
-  background: rgba(25, 25, 25, 0.9);
-  box-shadow: 0 0 18px rgba(80, 255, 0, 0.08);
-}
-
-.endereco {
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: anywhere;
-  text-align: left;
-  padding: 8px;
-  font-size: clamp(12px, 3.4vw, 20px);
-}
-
-.botao {
-  flex-shrink: 0;
-  border: none;
-  border-radius: 17px;
-  background: #f12645;
-  color: white;
-  font-size: 17px;
-  padding: 16px 20px;
-  cursor: pointer;
-}
-
-.botao:hover {
-  background: #d91535;
-}
-
-.mensagem-copiado {
-  display: none;
-  margin: 18px auto 0;
-  padding: 15px 12px;
-  color: #8cff00;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1.5;
-  text-align: center;
-  text-shadow: 0 0 8px #55ff00, 0 0 18px #39ff14;
-  animation: brilhoVerde 1.2s ease-in-out infinite alternate;
-}
-
-.mensagem-copiado.visivel {
-  display: block;
-}
-
-.mensagem-copiado p {
-  margin: 6px 0 0;
-  color: #c4ff9e;
-  font-size: 14px;
-  font-weight: normal;
-}
-
-@keyframes brilhoVerde {
-  from {
-    opacity: 0.75;
-    text-shadow: 0 0 5px #55ff00;
-  }
-  to {
-    opacity: 1;
-    text-shadow: 0 0 12px #55ff00, 0 0 25px #39ff14;
-  }
-}
-
-.contador {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-  margin-top: 14px;
-  color: #c8f5a2;
-  font-size: 13px;
-}
-
-.olho,
-#totalVisitas {
-  color: #8cff00;
-}
-
-#totalVisitas {
-  font-weight: bold;
-}
-
-footer {
-  margin-top: 80px;
-  color: #777;
-  letter-spacing: 6px;
-  font-size: 13px;
-}
-
-@media (max-width: 420px) {
-  body {
-    padding: 28px 12px;
-  }
-
-  .marca {
-    margin-bottom: 38px;
-  }
-
-  .caixa-link {
-    padding: 7px;
-    border-radius: 17px;
-  }
-
-  .botao {
-    padding: 13px 12px;
-    font-size: 15px;
-  }
-
-  footer {
-    margin-top: 60px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .seta {
-    animation: none;
-  }
-
-  .mensagem-copiado {
-    animation: none;
-  }
-}
-</style>
-</head>
-
-<body>
-<main class="pagina">
-
-  <div class="marca">
-    <span>Ksada Delícia</span>
-    <span class="naipe">♠</span>
-  </div>
-
-  <h1>ACESSE PELO NAVEGADOR</h1>
-  <h2>COPIANDO O LINK ABAIXO</h2>
-
-  <p class="descricao">
-    Toque no botão para copiar o endereço.
-    Depois, cole no navegador e acesse o link oficial da Ksada Delícia.
-  </p>
-
-  <div class="linha">
-    <span class="ponto">●</span>
-  </div>
-
-  <div class="seta" aria-label="Seta apontando para o link">↓</div>
-
-  <div class="caixa-link">
-    <div class="endereco">
-      https://beacons.ai/CasadaDelicia
-    </div>
-
-    <button class="botao" id="copiar" type="button">
-      Copiar
-    </button>
-  </div>
-
-  <div id="mensagemCopiado" class="mensagem-copiado"
-       role="status" aria-live="polite">
-    <span>✓ LINK COPIADO COM SUCESSO!</span>
-    <p>Agora cole no navegador e acesse o link oficial da Ksada Delícia ♠</p>
-  </div>
-
-  <div class="contador">
-    <span class="olho">◉</span>
-    <span>VISITANTES:</span>
-    <span id="totalVisitas">...</span>
-  </div>
-
-  <footer>KSADA DELÍCIA</footer>
-
-</main>
-
 <script>
 const botao = document.getElementById("copiar");
 const endereco = "https://beacons.ai/CasadaDelicia";
@@ -339,21 +39,36 @@ botao.addEventListener("click", async () => {
   }, 2000);
 });
 
-function atualizarVisitas(resposta) {
+/* ===== CONTADOR DE VISITAS (corrigido) ===== */
+(function() {
   const campo = document.getElementById("totalVisitas");
+  const NAMESPACE = "ksada-delicia";
+  const KEY = "visitas";
 
-  if (resposta && Number.isFinite(Number(resposta.value))) {
-    campo.textContent =
-      Number(resposta.value).toLocaleString("pt-BR");
-  } else {
-    campo.textContent = "indisponível";
-  }
-}
+  // Incrementa e mostra o total
+  fetch(`https://api.countapi.xyz/hit/\( {NAMESPACE}/ \){KEY}`)
+    .then(r => r.json())
+    .then(data => {
+      if (data && Number.isFinite(data.value)) {
+        campo.textContent = Number(data.value).toLocaleString("pt-BR");
+      } else {
+        campo.textContent = "indisponível";
+      }
+    })
+    .catch(() => {
+      // Fallback: tenta só ler o valor atual
+      fetch(`https://api.countapi.xyz/get/\( {NAMESPACE}/ \){KEY}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data && Number.isFinite(data.value)) {
+            campo.textContent = Number(data.value).toLocaleString("pt-BR");
+          } else {
+            campo.textContent = "indisponível";
+          }
+        })
+        .catch(() => {
+          campo.textContent = "indisponível";
+        });
+    });
+})();
 </script>
-
-<script async
-src="https://counterapi.com/api/delicia27-hue.github.io/view/casada-delicia?callback=atualizarVisitas">
-</script>
-
-</body>
-</html>
