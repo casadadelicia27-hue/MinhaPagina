@@ -2,358 +2,342 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020502">
-<title>Ksada Delícia ♠</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050805">
+  <meta name="description" content="Ksada Delícia ♠ — aventuras, novidades e links oficiais.">
+  <title>Ksada Delícia ♠</title>
 
-<style>
-* {
-  box-sizing: border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  padding: 30px 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  text-align: center;
-  background: radial-gradient(ellipse at center,
-    #102600 0%, #030703 52%, #000 100%);
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      background:
+        radial-gradient(ellipse at top, #15351b 0%, #071008 45%, #020302 100%);
+    }
 
-.pagina {
-  width: 100%;
-  max-width: 700px;
-}
+    .pagina {
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      padding: 30px 22px 24px;
+      border: 1px solid rgba(140, 255, 0, 0.45);
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.60);
+      box-shadow: 0 0 28px rgba(100, 255, 0, 0.12);
+    }
 
-.marca {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 7px;
-  flex-wrap: wrap;
-  margin-bottom: 48px;
-  color: #91ff00;
-  font-family: "Brush Script MT", cursive;
-  font-size: clamp(43px, 10vw, 76px);
-  font-weight: bold;
-  font-style: italic;
-  line-height: 1.15;
-  text-shadow: 0 0 12px #67ff00, 0 0 30px #397d00;
-}
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 30px;
+      color: #8cff00;
+      font-size: clamp(27px, 7vw, 36px);
+      font-weight: 900;
+      text-shadow: 0 0 12px rgba(140, 255, 0, 0.65);
+    }
 
-.naipe {
-  font-family: Arial, sans-serif;
-  font-size: 0.68em;
-  font-style: normal;
-}
+    .naipe {
+      color: #ffffff;
+      font-size: 32px;
+    }
 
-h1 {
-  margin: 0 0 8px;
-  font-size: clamp(24px, 5.5vw, 40px);
-  line-height: 1.2;
-  font-weight: 900;
-}
+    h1 {
+      margin: 0 0 13px;
+      font-size: 23px;
+      line-height: 1.3;
+      color: #ffffff;
+    }
 
-h2 {
-  margin: 0 0 28px;
-  color: #8cff00;
-  font-size: clamp(22px, 5vw, 38px);
-  line-height: 1.2;
-  font-weight: 900;
-}
+    h2 {
+      margin: 0 0 18px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #8cff00;
+      letter-spacing: 1px;
+    }
 
-.descricao {
-  margin: 0 auto 35px;
-  color: #ccc;
-  font-size: clamp(16px, 3.5vw, 21px);
-  line-height: 1.6;
-}
+    .descricao {
+      color: #d4dfd1;
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 0 0 22px;
+    }
 
-.linha {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  margin-bottom: 28px;
-  color: #8cff00;
-}
+    .status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0 4px;
+      color: #baff8c;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
 
-.linha::before,
-.linha::after {
-  content: "";
-  flex: 1;
-  height: 4px;
-  background: #8cff00;
-  box-shadow: 0 0 12px #69ff00;
-}
+    .ponto {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #8cff00;
+      box-shadow: 0 0 10px #8cff00;
+    }
 
-.ponto {
-  font-size: 27px;
-}
+    .seta {
+      color: #8cff00;
+      font-size: 42px;
+      line-height: 1;
+      margin: 6px 0 20px;
+      animation: descer 1.1s infinite ease-in-out;
+      text-shadow: 0 0 14px rgba(140, 255, 0, 0.6);
+    }
 
-.seta {
-  display: inline-block;
-  color: #8cff00;
-  font-size: 76px;
-  line-height: 1;
-  margin-bottom: 30px;
-  text-shadow: 0 0 12px #69ff00, 0 0 25px #69ff00;
-  animation: setaMovimento 0.8s ease-in-out infinite,
-             setaPisca 1s steps(2, start) infinite;
-}
+    @keyframes descer {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(9px); }
+    }
 
-@keyframes setaMovimento {
-  0%, 100% { transform: translateY(-8px); }
-  50% { transform: translateY(12px); }
-}
+    .link-titulo {
+      color: #ffffff;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
 
-@keyframes setaPisca {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
-}
+    .link-caixa {
+      display: flex;
+      align-items: stretch;
+      gap: 8px;
+      padding: 7px;
+      border: 1px solid #5eaa20;
+      border-radius: 12px;
+      background: #101610;
+    }
 
-.caixa-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 12px;
-  border: 2px solid #444;
-  border-radius: 24px;
-  background: rgba(25, 25, 25, 0.9);
-  box-shadow: 0 0 18px rgba(80, 255, 0, 0.08);
-}
+    .endereco {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-wrap: anywhere;
+      color: #b9ff85;
+      font-size: 13px;
+      line-height: 1.5;
+      padding: 7px 2px;
+    }
 
-.endereco {
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: anywhere;
-  text-align: left;
-  padding: 8px;
-  font-size: clamp(12px, 3.4vw, 20px);
-}
+    #copiar {
+      flex-shrink: 0;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #e32636;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.botao {
-  flex-shrink: 0;
-  border: none;
-  border-radius: 17px;
-  background: #f12645;
-  color: white;
-  font-size: 17px;
-  padding: 16px 20px;
-  cursor: pointer;
-}
+    #copiar:hover {
+      background: #ff3546;
+    }
 
-.botao:hover {
-  background: #d91535;
-}
+    #mensagemCopiado {
+      display: none;
+      color: #8cff00;
+      font-size: 13px;
+      margin-top: 12px;
+    }
 
-.mensagem-copiado {
-  display: none;
-  margin: 18px auto 0;
-  padding: 15px 12px;
-  color: #8cff00;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 1.5;
-  text-align: center;
-  text-shadow: 0 0 8px #55ff00, 0 0 18px #39ff14;
-  animation: brilhoVerde 1.2s ease-in-out infinite alternate;
-}
+    #mensagemCopiado.visivel {
+      display: block;
+    }
 
-.mensagem-copiado.visivel {
-  display: block;
-}
+    .aviso {
+      color: #aeb7ab;
+      font-size: 12px;
+      line-height: 1.6;
+      margin-top: 22px;
+    }
 
-.mensagem-copiado p {
-  margin: 6px 0 0;
-  color: #c4ff9e;
-  font-size: 14px;
-  font-weight: normal;
-}
+    .contador-area {
+      margin-top: 24px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(140, 255, 0, 0.18);
+    }
 
-@keyframes brilhoVerde {
-  from {
-    opacity: 0.75;
-    text-shadow: 0 0 5px #55ff00;
-  }
-  to {
-    opacity: 1;
-    text-shadow: 0 0 12px #55ff00, 0 0 25px #39ff14;
-  }
-}
+    .contador-titulo {
+      margin-bottom: 9px;
+      color: #c8f5a2;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
 
-.contador {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-  margin-top: 14px;
-  color: #c8f5a2;
-  font-size: 13px;
-}
+    .contadorapi {
+      min-height: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-.olho,
-#totalVisitas {
-  color: #8cff00;
-}
+    .rodape {
+      margin-top: 20px;
+      color: #71806d;
+      font-size: 10px;
+    }
 
-#totalVisitas {
-  font-weight: bold;
-}
+    @media (max-width: 360px) {
+      .pagina {
+        padding: 25px 14px 20px;
+      }
 
-footer {
-  margin-top: 80px;
-  color: #777;
-  letter-spacing: 6px;
-  font-size: 13px;
-}
+      .link-caixa {
+        gap: 5px;
+      }
 
-@media (max-width: 420px) {
-  body {
-    padding: 28px 12px;
-  }
+      #copiar {
+        padding: 10px;
+      }
 
-  .marca {
-    margin-bottom: 38px;
-  }
+      .endereco {
+        font-size: 12px;
+      }
+    }
 
-  .caixa-link {
-    padding: 7px;
-    border-radius: 17px;
-  }
-
-  .botao {
-    padding: 13px 12px;
-    font-size: 15px;
-  }
-
-  footer {
-    margin-top: 60px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .seta {
-    animation: none;
-  }
-
-  .mensagem-copiado {
-    animation: none;
-  }
-}
-</style>
+    @media (prefers-reduced-motion: reduce) {
+      .seta {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<main class="pagina">
+  <main class="pagina">
 
-  <div class="marca">
-    <span>Ksada Delícia</span>
-    <span class="naipe">♠</span>
-  </div>
-
-  <h1>ACESSE PELO NAVEGADOR</h1>
-  <h2>COPIANDO O LINK ABAIXO</h2>
-
-  <p class="descricao">
-    Toque no botão para copiar o endereço.
-    Depois, cole no navegador e acesse o link oficial da Ksada Delícia.
-  </p>
-
-  <div class="linha">
-    <span class="ponto">●</span>
-  </div>
-
-  <div class="seta" aria-label="Seta apontando para o link">↓</div>
-
-  <div class="caixa-link">
-    <div class="endereco">
-      https://beacons.ai/CasadaDelicia
+    <div class="logo">
+      <span>Ksada Delícia</span>
+      <span class="naipe">♠</span>
     </div>
 
-    <button class="botao" id="copiar" type="button">
-      Copiar
-    </button>
-  </div>
+    <h1>ACESSE PELO NAVEGADOR</h1>
 
-  <div id="mensagemCopiado" class="mensagem-copiado"
-       role="status" aria-live="polite">
-    <span>✓ LINK COPIADO COM SUCESSO!</span>
-    <p>Agora cole no navegador e acesse o link oficial da Ksada Delícia ♠</p>
-  </div>
+    <h2>AVENTURAS, NOVIDADES E LINKS</h2>
 
-  <div class="contador">
-    <span class="olho">◉</span>
-    <span>VISITANTES:</span>
-    <span id="totalVisitas">...</span>
-  </div>
+    <p class="descricao">
+      Seja bem-vindo(a)! ✨<br>
+      Confira o conteúdo e acesse pelo link oficial abaixo.
+    </p>
 
-  <footer>KSADA DELÍCIA</footer>
+    <div class="status">
+      <span class="ponto"></span>
+      <span>LINK DISPONÍVEL ABAIXO</span>
+    </div>
 
-</main>
+    <div class="seta" aria-hidden="true">↓</div>
 
-<script>
-const botao = document.getElementById("copiar");
-const endereco = "https://beacons.ai/CasadaDelicia";
-const mensagem = document.getElementById("mensagemCopiado");
+    <div class="link-titulo">
+      TOQUE EM COPIAR PARA PEGAR O LINK
+    </div>
 
-botao.addEventListener("click", async () => {
-  let copiou = false;
+    <div class="link-caixa">
+      <div class="endereco" id="endereco">
+        https://beacons.ai/CasadaDelicia
+      </div>
 
-  try {
-    await navigator.clipboard.writeText(endereco);
-    copiou = true;
-  } catch (erro) {
-    const campo = document.createElement("textarea");
-    campo.value = endereco;
-    campo.style.position = "fixed";
-    campo.style.opacity = "0";
-    document.body.appendChild(campo);
-    campo.select();
+      <button id="copiar" type="button">
+        Copiar
+      </button>
+    </div>
 
-    try {
-      copiou = document.execCommand("copy");
-    } catch (e) {
-      copiou = false;
-    }
+    <div id="mensagemCopiado" role="status" aria-live="polite">
+      ✓ Link copiado! Agora é só colar no navegador.
+    </div>
 
-    campo.remove();
-  }
+    <p class="aviso">
+      Se o link não abrir diretamente, copie e cole no navegador.
+    </p>
 
-  if (copiou) {
-    botao.textContent = "Copiado!";
-    mensagem.classList.add("visivel");
-  } else {
-    botao.textContent = "Tente novamente";
-    mensagem.classList.remove("visivel");
-  }
+    <section class="contador-area" aria-label="Contador de visitantes">
+      <div class="contador-titulo">VISITANTES DA PÁGINA</div>
 
-  setTimeout(() => {
-    botao.textContent = "Copiar";
-  }, 2000);
-});
+      <div
+        class="counterapi"
+        ns="casadadelicia27-hue.github.io"
+        key="casada-delicia"
+        action="view"
+        icon="eye"
+        noLink="true"
+        noFormatting="true"
+        style="min-height:44px">
+      </div>
+    </section>
 
-function atualizarVisitas(resposta) {
-  const campo = document.getElementById("totalVisitas");
+    <div class="rodape">
+      Ksada Delícia ♠
+    </div>
 
-  if (resposta && Number.isFinite(Number(resposta.value))) {
-    campo.textContent =
-      Number(resposta.value).toLocaleString("pt-BR");
-  } else {
-    campo.textContent = "indisponível";
-  }
-}
-</script>
+  </main>
 
-<script async
-src="https://counterapi.com/api/delicia27-hue.github.io/view/casada-delicia?callback=atualizarVisitas">
-</script>
+  <!-- Contador oficial CounterAPI -->
+  <script
+    src="https://counterapi.com/c.js?ns=casadadelicia27-hue.github.io"
+    async>
+  </script>
 
+  <script>
+    const botao = document.getElementById("copiar");
+    const endereco = "https://beacons.ai/CasadaDelicia";
+    const mensagem = document.getElementById("mensagemCopiado");
+
+    botao.addEventListener("click", async function () {
+      let copiou = false;
+
+      try {
+        await navigator.clipboard.writeText(endereco);
+        copiou = true;
+      } catch (erro) {
+        const campo = document.createElement("textarea");
+        campo.value = endereco;
+        campo.style.position = "fixed";
+        campo.style.left = "-9999px";
+        document.body.appendChild(campo);
+        campo.focus();
+        campo.select();
+
+        try {
+          copiou = document.execCommand("copy");
+        } catch (erroCopia) {
+          copiou = false;
+        }
+
+        campo.remove();
+      }
+
+      if (copiou) {
+        botao.textContent = "Copiado!";
+        mensagem.classList.add("visivel");
+      } else {
+        botao.textContent = "Copie manualmente";
+        mensagem.classList.remove("visivel");
+      }
+
+      setTimeout(function () {
+        botao.textContent = "Copiar";
+      }, 2500);
+    });
+  </script>
 </body>
 </html>
