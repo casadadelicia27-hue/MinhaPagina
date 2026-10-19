@@ -21,8 +21,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   color: white;
   text-align: center;
-  background: radial-gradient(ellipse at center,
-    #102600 0%, #030703 52%, #000 100%);
+  background: radial-gradient(ellipse at center, #102600 0%, #030703 52%, #000 100%);
 }
 
 .pagina {
@@ -102,8 +101,7 @@ h2 {
   line-height: 1;
   margin-bottom: 30px;
   text-shadow: 0 0 12px #69ff00, 0 0 25px #69ff00;
-  animation: setaMovimento 0.8s ease-in-out infinite,
-             setaPisca 1s steps(2, start) infinite;
+  animation: setaMovimento 0.8s ease-in-out infinite, setaPisca 1s steps(2, start) infinite;
 }
 
 @keyframes setaMovimento {
@@ -242,4 +240,137 @@ footer {
     animation: none;
   }
 
-  .mensagem-copiado
+  .mensagem-copiado {
+    animation: none;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="pagina">
+
+  <div class="marca">
+    <span>Ksada Delícia</span>
+    <span class="naipe">♠</span>
+  </div>
+
+  <h1>ACESSE PELO NAVEGADOR</h1>
+  <h2>COPIANDO O LINK ABAIXO</h2>
+
+  <p class="descricao">
+    Toque no botão para copiar o endereço.
+    Depois, cole no navegador e acesse o link oficial da Ksada Delícia.
+  </p>
+
+  <div class="linha">
+    <span class="ponto">●</span>
+  </div>
+
+  <div class="seta" aria-label="Seta apontando para o link">↓</div>
+
+  <div class="caixa-link">
+    <div class="endereco">
+      https://beacons.ai/CasadaDelicia
+    </div>
+
+    <button class="botao" id="copiar" type="button">
+      Copiar
+    </button>
+  </div>
+
+  <div id="mensagemCopiado" class="mensagem-copiado" role="status" aria-live="polite">
+    <span>✓ LINK COPIADO COM SUCESSO!</span>
+    <p>Agora cole no navegador e acesse o link oficial da Ksada Delícia ♠</p>
+  </div>
+
+  <div class="contador">
+    <span class="olho">◉</span>
+    <span>VISITANTES:</span>
+    <span id="totalVisitas">...</span>
+  </div>
+
+  <footer>KSADA DELÍCIA</footer>
+
+</main>
+
+<script>
+// Botão Copiar
+const botao = document.getElementById("copiar");
+const endereco = "https://beacons.ai/CasadaDelicia";
+const mensagem = document.getElementById("mensagemCopiado");
+
+botao.addEventListener("click", async function () {
+  let copiou = false;
+
+  try {
+    await navigator.clipboard.writeText(endereco);
+    copiou = true;
+  } catch (erro) {
+    const campo = document.createElement("textarea");
+    campo.value = endereco;
+    campo.style.position = "fixed";
+    campo.style.opacity = "0";
+    document.body.appendChild(campo);
+    campo.select();
+
+    try {
+      copiou = document.execCommand("copy");
+    } catch (e) {
+      copiou = false;
+    }
+
+    campo.remove();
+  }
+
+  if (copiou) {
+    botao.textContent = "Copiado!";
+    mensagem.classList.add("visivel");
+  } else {
+    botao.textContent = "Tente novamente";
+    mensagem.classList.remove("visivel");
+  }
+
+  setTimeout(function () {
+    botao.textContent = "Copiar";
+  }, 2000);
+});
+
+// Contador de Visitas
+(function () {
+  const campo = document.getElementById("totalVisitas");
+  const KEY = "ksada-delicia-visitas";
+
+  function mostrar(valor) {
+    if (valor !== undefined && valor !== null && !isNaN(valor)) {
+      campo.textContent = Number(valor).toLocaleString("pt-BR");
+    } else {
+      campo.textContent = "—";
+    }
+  }
+
+  fetch("https://countapi.mileshilliard.com/api/v1/hit/" + KEY)
+    .then(function (resposta) {
+      return resposta.json();
+    })
+    .then(function (dados) {
+      mostrar(dados.value);
+    })
+    .catch(function () {
+      // Se der erro, tenta só ler o valor
+      fetch("https://countapi.mileshilliard.com/api/v1/get/" + KEY)
+        .then(function (resposta) {
+          return resposta.json();
+        })
+        .then(function (dados) {
+          mostrar(dados.value);
+        })
+        .catch(function () {
+          campo.textContent = "—";
+        });
+    });
+})();
+</script>
+
+</body>
+</html>
