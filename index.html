@@ -15,7 +15,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  padding: 35px 16px;
+  padding: 30px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +51,6 @@ body {
   font-family: Arial, sans-serif;
   font-size: 0.68em;
   font-style: normal;
-  text-shadow: 0 0 12px #67ff00;
 }
 
 h1 {
@@ -154,6 +153,41 @@ h2 {
   background: #d91535;
 }
 
+.mensagem-copiado {
+  display: none;
+  margin: 18px auto 0;
+  padding: 15px 12px;
+  color: #8cff00;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  text-shadow: 0 0 8px #55ff00, 0 0 18px #39ff14;
+  animation: brilhoVerde 1.2s ease-in-out infinite alternate;
+}
+
+.mensagem-copiado.visivel {
+  display: block;
+}
+
+.mensagem-copiado p {
+  margin: 6px 0 0;
+  color: #c4ff9e;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+@keyframes brilhoVerde {
+  from {
+    opacity: 0.75;
+    text-shadow: 0 0 5px #55ff00;
+  }
+  to {
+    opacity: 1;
+    text-shadow: 0 0 12px #55ff00, 0 0 25px #39ff14;
+  }
+}
+
 .contador {
   display: flex;
   justify-content: flex-end;
@@ -208,6 +242,10 @@ footer {
   .seta {
     animation: none;
   }
+
+  .mensagem-copiado {
+    animation: none;
+  }
 }
 </style>
 </head>
@@ -235,13 +273,19 @@ footer {
   <div class="seta" aria-label="Seta apontando para o link">↓</div>
 
   <div class="caixa-link">
-    <div class="endereco" id="endereco">
+    <div class="endereco">
       https://beacons.ai/CasadaDelicia
     </div>
 
     <button class="botao" id="copiar" type="button">
       Copiar
     </button>
+  </div>
+
+  <div id="mensagemCopiado" class="mensagem-copiado"
+       role="status" aria-live="polite">
+    <span>✓ LINK COPIADO COM SUCESSO!</span>
+    <p>Agora cole no navegador e acesse o link oficial da Ksada Delícia ♠</p>
   </div>
 
   <div class="contador">
@@ -257,11 +301,14 @@ footer {
 <script>
 const botao = document.getElementById("copiar");
 const endereco = "https://beacons.ai/CasadaDelicia";
+const mensagem = document.getElementById("mensagemCopiado");
 
 botao.addEventListener("click", async () => {
+  let copiou = false;
+
   try {
     await navigator.clipboard.writeText(endereco);
-    botao.textContent = "Copiado!";
+    copiou = true;
   } catch (erro) {
     const campo = document.createElement("textarea");
     campo.value = endereco;
@@ -270,9 +317,21 @@ botao.addEventListener("click", async () => {
     document.body.appendChild(campo);
     campo.select();
 
-    const copiou = document.execCommand("copy");
+    try {
+      copiou = document.execCommand("copy");
+    } catch (e) {
+      copiou = false;
+    }
+
     campo.remove();
-    botao.textContent = copiou ? "Copiado!" : "Tente novamente";
+  }
+
+  if (copiou) {
+    botao.textContent = "Copiado!";
+    mensagem.classList.add("visivel");
+  } else {
+    botao.textContent = "Tente novamente";
+    mensagem.classList.remove("visivel");
   }
 
   setTimeout(() => {
