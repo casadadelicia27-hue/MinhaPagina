@@ -2,251 +2,280 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050605">
-<title>CASADA DELÍCIA</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#020502">
+  <title>Ksada Delícia | Link Oficial</title>
 
-<style>
-:root {
-  --verde: #9cff00;
-  --vermelho: #ed3449;
-  --fundo: #050605;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 35px 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at center, #102600 0%, #030703 52%, #000 100%);
+    }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px 16px;
-  background:
-    radial-gradient(ellipse at center, #102000 0%, #050605 65%);
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-}
+    .pagina {
+      width: 100%;
+      max-width: 700px;
+    }
 
-.container {
-  width: 100%;
-  max-width: 790px;
-  text-align: center;
-}
+    .marca {
+      color: #91ff00;
+      font-family: "Brush Script MT", cursive;
+      font-size: clamp(48px, 12vw, 82px);
+      font-weight: bold;
+      font-style: italic;
+      line-height: 1;
+      text-shadow: 0 0 12px #67ff00, 0 0 35px #397d00;
+      margin-bottom: 50px;
+    }
 
-.corrente {
-  font-size: 100px;
-  line-height: 1.2;
-  color: var(--verde);
-  filter: drop-shadow(0 0 15px #9cff0080);
-  margin-bottom: 15px;
-}
+    .naipe {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 45px;
+      font-style: normal;
+      margin-bottom: 8px;
+    }
 
-h1 {
-  margin: 0;
-  font-size: clamp(28px, 6vw, 49px);
-  line-height: 1.12;
-  font-weight: 900;
-  text-transform: uppercase;
-}
+    h1 {
+      font-size: clamp(25px, 5.5vw, 42px);
+      line-height: 1.2;
+      margin: 0 0 8px;
+      font-weight: 900;
+    }
 
-h1 span {
-  display: block;
-  color: var(--verde);
-  margin-top: 5px;
-}
+    h2 {
+      color: #8cff00;
+      font-size: clamp(23px, 5vw, 39px);
+      line-height: 1.2;
+      margin: 0 0 28px;
+      font-weight: 900;
+    }
 
-.subtitulo {
-  color: #ccc;
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 22px auto;
-  max-width: 470px;
-}
+    .descricao {
+      color: #ccc;
+      font-size: clamp(16px, 3.5vw, 21px);
+      line-height: 1.6;
+      margin: 0 auto 38px;
+    }
 
-.linha {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  max-width: 400px;
-  margin: 25px auto;
-  color: var(--verde);
-}
+    .linha {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      margin: 0 0 42px;
+      color: #8cff00;
+    }
 
-.linha::before,
-.linha::after {
-  content: "";
-  height: 2px;
-  flex: 1;
-  background: var(--verde);
-  box-shadow: 0 0 8px var(--verde);
-}
+    .linha::before,
+    .linha::after {
+      content: "";
+      flex: 1;
+      height: 4px;
+      background: #8cff00;
+      box-shadow: 0 0 12px #69ff00;
+    }
 
-.ponto {
-  width: 10px;
-  height: 10px;
-  background: var(--verde);
-  border-radius: 50%;
-  box-shadow: 0 0 12px var(--verde);
-}
+    .ponto {
+      font-size: 30px;
+    }
 
-.seta {
-  font-size: 76px;
-  color: var(--verde);
-  line-height: 1;
-  margin: 15px 0 30px;
-  filter: drop-shadow(0 0 10px #9cff0070);
-  animation: descer 1.5s infinite ease-in-out;
-}
+    .seta {
+      color: #8cff00;
+      font-size: 72px;
+      line-height: 1;
+      margin-bottom: 40px;
+      text-shadow: 0 0 15px #69ff00;
+    }
 
-.caixa {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px;
-  border: 1px solid #454545;
-  border-radius: 16px;
-  background: #191919;
-  box-shadow: 0 12px 35px #0008;
-}
+    .caixa-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px;
+      border: 2px solid #444;
+      border-radius: 25px;
+      background: rgba(25, 25, 25, 0.88);
+      box-shadow: 0 0 18px rgba(80, 255, 0, 0.08);
+    }
 
-.link {
-  flex: 1;
-  min-width: 0;
-  overflow-wrap: anywhere;
-  text-align: left;
-  font-size: clamp(13px, 3vw, 21px);
-  padding-left: 8px;
-}
+    .endereco {
+      flex: 1;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      text-align: left;
+      padding: 8px;
+      font-size: clamp(13px, 3.5vw, 20px);
+      color: #fff;
+    }
 
-button {
-  border: 0;
-  border-radius: 12px;
-  background: var(--vermelho);
-  color: white;
-  padding: 17px 23px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .botao {
+      border: none;
+      border-radius: 18px;
+      background: #f12645;
+      color: white;
+      font-size: 18px;
+      padding: 17px 22px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-button:hover {
-  filter: brightness(1.15);
-}
+    .botao:hover {
+      background: #d91535;
+      transform: scale(1.03);
+    }
 
-#mensagem {
-  min-height: 22px;
-  margin-top: 14px;
-  color: var(--verde);
-  font-size: 14px;
-}
+    .contador {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 9px;
+      color: #c8f5a2;
+      font-size: 13px;
+      margin-top: 14px;
+    }
 
-.rodape {
-  color: #777;
-  font-size: 12px;
-  margin-top: 38px;
-  letter-spacing: 2px;
-}
+    .olho {
+      color: #8cff00;
+      font-size: 22px;
+    }
 
-@keyframes descer {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(9px); }
-}
+    #totalVisitas {
+      color: #8cff00;
+      font-weight: bold;
+    }
 
-@media (max-width: 450px) {
-  .corrente { font-size: 78px; }
-  .caixa { gap: 7px; padding: 9px; }
-  button { padding: 15px 13px; font-size: 14px; }
-  .subtitulo { font-size: 14px; }
-}
+    footer {
+      margin-top: 85px;
+      color: #777;
+      letter-spacing: 7px;
+      font-size: 13px;
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation: none !important;
-  }
-}
-</style>
+    @media (max-width: 420px) {
+      body {
+        padding: 30px 14px;
+      }
+
+      .marca {
+        margin-bottom: 40px;
+      }
+
+      .caixa-link {
+        border-radius: 18px;
+        padding: 8px;
+      }
+
+      .botao {
+        font-size: 15px;
+        padding: 14px 15px;
+      }
+
+      footer {
+        margin-top: 65px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<main class="container">
+  <main class="pagina">
 
-  <div class="corrente" aria-hidden="true">🔗</div>
-
-  <h1>
-    Acesse pelo navegador
-    <span>copiando o link abaixo</span>
-  </h1>
-
-  <p class="subtitulo">
-    Toque no botão para copiar o endereço.
-    Depois, cole no navegador e acesse
-    o link oficial da Casada Delícia.
-  </p>
-
-  <div class="linha" aria-hidden="true">
-    <span class="ponto"></span>
-  </div>
-
-  <div class="seta" aria-hidden="true">↓</div>
-
-  <section class="caixa">
-    <div class="link" id="endereco">
-      https://beacons.ai/CasadaDelicia
+    <div class="marca">
+      <span class="naipe">♠</span>
+      Ksada<br>Delícia
     </div>
 
-    <button id="copiar" type="button">
-      Copiar
-    </button>
-  </section>
+    <h1>ACESSE PELO NAVEGADOR</h1>
+    <h2>COPIANDO O LINK ABAIXO</h2>
 
-  <p id="mensagem" role="status" aria-live="polite"></p>
+    <p class="descricao">
+      Toque no botão para copiar o endereço.
+      Depois, cole no navegador e acesse o link oficial da Ksada Delícia.
+    </p>
 
-  <div class="rodape">CASADA DELÍCIA</div>
+    <div class="linha">
+      <span class="ponto">●</span>
+    </div>
 
-</main>
+    <div class="seta">↓</div>
 
-<script>
-const endereco = "https://beacons.ai/CasadaDelicia";
-const botao = document.getElementById("copiar");
-const mensagem = document.getElementById("mensagem");
+    <div class="caixa-link">
+      <div class="endereco" id="endereco">
+        https://beacons.ai/CasadaDelicia
+      </div>
 
-botao.addEventListener("click", async () => {
-  try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(endereco);
-    } else {
-      const campo = document.createElement("textarea");
-      campo.value = endereco;
-      campo.style.position = "fixed";
-      campo.style.left = "-9999px";
-      document.body.appendChild(campo);
-      campo.select();
+      <button class="botao" id="copiar" type="button">
+        Copiar
+      </button>
+    </div>
 
-      const sucesso = document.execCommand("copy");
-      campo.remove();
+    <div class="contador">
+      <span class="olho">◉</span>
+      <span>VISITANTES:</span>
+      <span id="totalVisitas">...</span>
+    </div>
 
-      if (!sucesso) throw new Error("Falha ao copiar");
+    <footer>KSADA DELÍCIA</footer>
+
+  </main>
+
+  <script>
+    const botao = document.getElementById("copiar");
+    const endereco = "https://beacons.ai/CasadaDelicia";
+
+    botao.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(endereco);
+        botao.textContent = "Copiado!";
+      } catch (erro) {
+        const campo = document.createElement("textarea");
+        campo.value = endereco;
+        campo.style.position = "fixed";
+        campo.style.opacity = "0";
+        document.body.appendChild(campo);
+        campo.select();
+
+        const copiou = document.execCommand("copy");
+        campo.remove();
+
+        botao.textContent = copiou ? "Copiado!" : "Copie o link";
+      }
+
+      setTimeout(() => {
+        botao.textContent = "Copiar";
+      }, 2000);
+    });
+
+    function atualizarVisitas(resposta) {
+      const campo = document.getElementById("totalVisitas");
+
+      if (resposta && Number.isFinite(Number(resposta.value))) {
+        campo.textContent =
+          Number(resposta.value).toLocaleString("pt-BR");
+      } else {
+        campo.textContent = "indisponível";
+      }
     }
+  </script>
 
-    botao.textContent = "Copiado!";
-    mensagem.textContent =
-      "Link copiado! Agora é só colar no navegador.";
-
-    setTimeout(() => {
-      botao.textContent = "Copiar";
-    }, 2500);
-
-  } catch (erro) {
-    mensagem.textContent =
-      "Copie o endereço manualmente: " + endereco;
-  }
-});
-</script>
+  <script async
+    src="https://counterapi.com/api/delicia27-hue.github.io/view/casada-delicia?callback=atualizarVisitas">
+  </script>
 
 </body>
 </html>
