@@ -4,9 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050805">
-  <meta name="description" content="Ksada Delícia ♠ — aventuras, novidades e links oficiais.">
+  <meta name="theme-color" content="#030503">
+  <meta name="description" content="Ksada Delícia — aventuras, novidades e link oficial.">
   <title>Ksada Delícia ♠</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -16,215 +20,244 @@
     body {
       margin: 0;
       min-height: 100vh;
-      padding: 24px 16px;
+      padding: 30px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #fff;
-      background: radial-gradient(
-        ellipse at top,
-        #15351b 0%,
-        #071008 45%,
-        #020302 100%
-      );
+      background:
+        radial-gradient(ellipse at 52% 58%, rgba(40, 105, 0, .20), transparent 50%),
+        #020302;
+      color: white;
+      font-family: 'Roboto', Arial, sans-serif;
     }
 
     .pagina {
       width: 100%;
-      max-width: 640px;
+      max-width: 720px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 120px 0 45px;
       text-align: center;
-      padding: 35px 22px 28px;
-      border: 1px solid rgba(140, 255, 0, 0.45);
-      border-radius: 30px;
-      background: rgba(0, 0, 0, 0.65);
-      box-shadow: 0 0 28px rgba(100, 255, 0, 0.12);
     }
 
     .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 55px;
-      color: #8cff00;
-      font-size: clamp(28px, 7vw, 48px);
-      font-weight: 900;
-      text-shadow: 0 0 12px rgba(140, 255, 0, 0.65);
+      margin: 0 0 55px;
+      color: #80ff00;
+      font-family: 'Allura', cursive;
+      font-size: clamp(55px, 10vw, 86px);
+      line-height: 1.15;
+      white-space: nowrap;
+      text-shadow:
+        0 0 8px rgba(128, 255, 0, .8),
+        0 0 24px rgba(128, 255, 0, .45);
     }
 
     .naipe {
-      color: #fff;
-      font-size: 0.9em;
+      font-family: Arial, sans-serif;
+      font-size: .65em;
     }
 
     h1 {
-      margin: 0 0 25px;
-      font-size: clamp(23px, 5.5vw, 38px);
-      line-height: 1.3;
+      margin: 0 0 12px;
+      font-size: clamp(25px, 5vw, 40px);
+      font-weight: 700;
+      line-height: 1.35;
     }
 
     h2 {
-      margin: 0 0 35px;
-      font-size: clamp(15px, 3.8vw, 23px);
-      line-height: 1.5;
-      color: #8cff00;
-      letter-spacing: 1px;
+      margin: 0 0 48px;
+      color: #80ff00;
+      font-size: clamp(21px, 4.5vw, 35px);
+      line-height: 1.35;
+      font-weight: 700;
     }
 
     .descricao {
-      color: #d4dfd1;
-      font-size: clamp(15px, 3.8vw, 22px);
+      margin: 0;
+      color: #c8c8c8;
+      font-size: clamp(17px, 3.8vw, 27px);
       line-height: 1.8;
-      margin: 0 0 38px;
+      font-weight: 300;
     }
 
-    .status {
+    .linha-neon {
+      width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin: 20px 0 18px;
-      color: #baff8c;
-      font-size: 15px;
-      letter-spacing: 1.5px;
+      gap: 45px;
+      margin: 85px 0 105px;
     }
 
-    .ponto {
-      width: 13px;
-      height: 13px;
-      flex-shrink: 0;
+    .linha-neon::before,
+    .linha-neon::after {
+      content: "";
+      height: 6px;
+      flex: 1;
+      background: #80ff00;
+      box-shadow: 0 0 12px #80ff00;
+    }
+
+    .linha-neon span {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
       border-radius: 50%;
-      background: #8cff00;
-      box-shadow: 0 0 10px #8cff00;
+      background: #80ff00;
+      box-shadow: 0 0 16px rgba(128, 255, 0, .5);
     }
 
     .seta {
-      color: #8cff00;
-      font-size: 48px;
+      margin-bottom: 55px;
+      color: #80ff00;
+      font-size: 78px;
       line-height: 1;
-      margin: 22px 0 40px;
-      animation: descer 1.1s infinite ease-in-out;
-      text-shadow: 0 0 14px rgba(140, 255, 0, 0.6);
+      text-shadow: 0 0 15px rgba(128, 255, 0, .7);
+      animation: mover 1.2s infinite ease-in-out;
     }
 
-    @keyframes descer {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(9px);
-      }
-    }
-
-    .link-titulo {
-      color: #fff;
-      font-size: 16px;
-      margin-bottom: 18px;
+    @keyframes mover {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(12px); }
     }
 
     .link-caixa {
+      width: 100%;
       display: flex;
-      align-items: stretch;
+      align-items: center;
       gap: 8px;
-      padding: 10px;
-      border: 1px solid #75b934;
-      border-radius: 22px;
-      background: #101610;
+      padding: 14px;
+      border: 3px solid #444;
+      border-radius: 30px;
+      background: #191919;
+      box-shadow: 0 0 10px rgba(128, 255, 0, .05);
     }
 
     .endereco {
       flex: 1;
       min-width: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 8px;
       overflow-wrap: anywhere;
-      color: #b9ff85;
-      font-size: clamp(12px, 3.5vw, 19px);
+      text-align: left;
+      color: #f4f4f4;
+      font-size: clamp(14px, 3.4vw, 23px);
       line-height: 1.5;
-      padding: 10px 4px;
     }
 
     #copiar {
       flex-shrink: 0;
-      border: 0;
-      border-radius: 14px;
-      padding: 15px 22px;
-      background: #f52d43;
-      color: #fff;
-      font-size: 16px;
+      padding: 18px 24px;
+      border: none;
+      border-radius: 24px;
+      background: #f52245;
+      color: white;
+      font-family: inherit;
+      font-size: 21px;
       cursor: pointer;
     }
 
-    #copiar:hover {
-      background: #ff4054;
+    #copiar:active {
+      transform: scale(.97);
     }
 
     #mensagemCopiado {
       display: none;
-      color: #8cff00;
-      font-size: 16px;
+      margin-top: 15px;
+      color: #80ff00;
+      font-size: 17px;
       line-height: 1.5;
-      margin-top: 18px;
     }
 
     #mensagemCopiado.visivel {
       display: block;
     }
 
-    .aviso {
-      color: #aeb7ab;
-      font-size: 15px;
-      line-height: 1.7;
-      margin-top: 38px;
-    }
-
-    .contador-area {
-      margin-top: 42px;
-      padding-top: 25px;
-      border-top: 1px solid rgba(140, 255, 0, 0.18);
-    }
-
-    .contador-titulo {
-      margin-bottom: 16px;
-      color: #c8f5a2;
-      font-size: 15px;
-      letter-spacing: 2px;
-    }
-
-    /* Área do contador */
-    .counterapi {
-      min-height: 44px;
+    .contador {
+      width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
-      color: #8cff00;
+      gap: 9px;
+      margin-top: 25px;
+      color: #c8f5a2;
+      font-size: 17px;
+    }
+
+    .contador-ponto {
+      color: #80ff00;
+      font-size: 22px;
+      text-shadow: 0 0 8px #80ff00;
+    }
+
+    /* O serviço insere o número dentro deste espaço */
+    .contador-api {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 30px;
+      min-height: 30px;
+      color: #c8f5a2;
     }
 
     .rodape {
-      margin-top: 42px;
-      color: #71806d;
-      font-size: 13px;
+      margin-top: auto;
+      padding-top: 100px;
+      color: #777;
+      font-size: 18px;
+      letter-spacing: 8px;
     }
 
-    @media (max-width: 380px) {
+    @media (max-width: 480px) {
+      body {
+        padding: 20px;
+      }
+
       .pagina {
-        padding: 26px 14px 22px;
+        padding-top: 145px;
+        padding-bottom: 40px;
+      }
+
+      .logo {
+        margin-bottom: 55px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      h2 {
+        margin-bottom: 48px;
+        font-size: 23px;
+      }
+
+      .linha-neon {
+        gap: 45px;
+        margin: 85px 0 105px;
       }
 
       .link-caixa {
-        gap: 5px;
-        padding: 7px;
-      }
-
-      #copiar {
-        padding: 12px;
-        font-size: 14px;
+        padding: 10px;
+        border-radius: 28px;
       }
 
       .endereco {
-        font-size: 12px;
+        font-size: 15px;
+      }
+
+      #copiar {
+        padding: 17px 20px;
+        font-size: 19px;
+      }
+
+      .contador {
+        font-size: 16px;
+      }
+
+      .rodape {
+        padding-top: 100px;
+        font-size: 15px;
+        letter-spacing: 6px;
       }
     }
 
@@ -240,67 +273,63 @@
   <main class="pagina">
 
     <div class="logo">
-      <span>Ksada Delícia</span>
-      <span class="naipe">♠</span>
+      Ksada Delícia<span class="naipe">♠</span>
     </div>
 
     <h1>ACESSE PELO NAVEGADOR</h1>
 
-    <h2>AVENTURAS, NOVIDADES E LINKS</h2>
+    <h2>COPIANDO O LINK ABAIXO</h2>
 
     <p class="descricao">
-      Seja bem-vindo(a)! ✨<br>
-      Confira o conteúdo e acesse pelo link oficial abaixo.
+      Toque no botão para copiar o endereço. Depois, cole<br class="desktop">
+      no navegador e acesse o link oficial da Ksada Delícia.
     </p>
 
-    <div class="status">
-      <span class="ponto"></span>
-      <span>LINK DISPONÍVEL ABAIXO</span>
+    <div class="linha-neon" aria-hidden="true">
+      <span></span>
     </div>
 
     <div class="seta" aria-hidden="true">↓</div>
-
-    <div class="link-titulo">
-      TOQUE EM COPIAR PARA PEGAR O LINK
-    </div>
 
     <div class="link-caixa">
       <div class="endereco" id="endereco">
         https://beacons.ai/CasadaDelicia
       </div>
 
-      <button id="copiar" type="button">
-        Copiar
-      </button>
+      <button id="copiar" type="button">Copiar</button>
     </div>
 
     <div id="mensagemCopiado" role="status" aria-live="polite">
       ✓ Link copiado! Agora é só colar no navegador.
     </div>
 
-    <p class="aviso">
-      Se o link não abrir diretamente, copie e cole no navegador.
-    </p>
+    <div class="contador">
+      <span class="contador-ponto">◉</span>
+      <span>VISITANTES:</span>
 
-    <section class="contador-area" aria-label="Contador de visitantes">
-      <div class="contador-titulo">VISITANTES DA PÁGINA</div>
-
-      <div class="counterapi" style="min-height:44px"></div>
-    </section>
-
-    <div class="rodape">
-      Ksada Delícia ♠
+      <span class="contador-api">
+        <span
+          class="counterapi"
+          ns="casadadelicia27-hue.github.io"
+          key="casada-delicia"
+          action="view"
+          noLink="true"
+          noFormatting="true">
+        </span>
+      </span>
     </div>
+
+    <footer class="rodape">KSADA DELÍCIA</footer>
 
   </main>
 
-  <!-- Contador oficial CounterAPI -->
+  <!-- Contador de visitantes CounterAPI -->
   <script
     src="https://counterapi.com/c.js?ns=casadadelicia27-hue.github.io"
     async>
   </script>
 
-  <!-- Botão para copiar o link -->
+  <!-- Botão de copiar -->
   <script>
     const botao = document.getElementById("copiar");
     const endereco = "https://beacons.ai/CasadaDelicia";
@@ -314,7 +343,6 @@
         copiou = true;
       } catch (erro) {
         const campo = document.createElement("textarea");
-
         campo.value = endereco;
         campo.style.position = "fixed";
         campo.style.left = "-9999px";
@@ -345,7 +373,5 @@
       }, 2500);
     });
   </script>
-
 </body>
-  </html>
-  
+</html>
